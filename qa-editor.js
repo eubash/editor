@@ -239,43 +239,7 @@
             }
 
         };
-
-
-
-        //
-        //// Q&A Bold Button event
-        //
-        //boldButton.addEventListener( "click", function(e) {
-        //    e.preventDefault();
-        //    var chunk = editor.getSelection();
-        //    var cursorPos = editor.getCursor();
-        //
-        //    if(!chunk)
-        //        chunk = "strong text";
-        //        editor.replaceSelection('**' + chunk + '**');
-        //
-        //    //} else if() {
-        //    //
-        //    //}
-        //   // var lastCursorPos = editor.getCursor();
-        //   // debugger;
-        //   // var sel = editor.setSelection(cursorPos, lastCursorPos);
-        //   // console.log(editor.somethingSelected());
-        //   console.log((cursorPos.ch + 2) == '**');
-        //   // console.log(lastCursorPos.ch - 2);
-        //        //console.log(r);
-        //     //   editor.setCursor(cursorPos.line, cursorPos.ch - 2);
-        //
-        //    //} else {
-        //    //    editor.replaceSelection('**' + chunk + '**');
-        //    //}
-        //
-        //    //editor.replaceSelection('**' + chunk + '**');
-        //    //if (!chunk) {
-        //    //    var cursorPos = editor.getCursor();
-        //    //    editor.setCursor(cursorPos.line, cursorPos.ch - 2);
-        //    //}
-        //});
+        
     };
 
     window.QaEditor = QaEditor;
