@@ -1,0 +1,43 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Q&A Editor</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="qa.css" />
+        <link rel="stylesheet" href="lib/codemirror.css">
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+        <script src="lib/codemirror.js"></script>
+        <script src="lib/searchcursor.js"></script>
+
+    </head>
+    <body>
+
+        <!-- Add your site or application content here -->
+        <div class="qa-title">
+        <h3>Simple Q&A Editor</h3>
+        </div>
+
+        <div id="qa-editor" class="qa-panel">
+            <div id="qa-button-bar" class="qa-buttons"></div>
+            <textarea id="qa-input"></textarea>
+        </div>
+        <div class="qa-title-preview">
+            <h2>Predprosmotr</h2>
+            <p>How your text is look like</p></div>
+        <div id="qa-preview" class="qa-panel"></div>
+
+        <!-- Start Application Script -->
+        <script defer type="text/javascript" src="qa-editor.js"></script>
+        <script defer type="text/javascript" src="service.js"></script>
+        <!-- /End Application Script -->
+    </body>
+</html>

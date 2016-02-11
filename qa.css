@@ -1,5 +1,5 @@
-body 
-{ 
+body
+{
 	background-color: White
 }
 
@@ -16,7 +16,7 @@ body
 	background-color: #eeeeee;
 }
 
-#qa-button-bar 
+#qa-button-bar, .qa-buttons
 {
 	width: 100%;
 	background-color: #eeeeee;
@@ -26,15 +26,15 @@ body
 	height: 36px;
 }
 
-#qa-input 
-{ 
+#qa-input
+{
 	height: 200px;
 	width: 100%;
 	background-color: #fff;
 	border: 1px solid #cccccc;
 }
 
-#qa-preview 
+#qa-preview
 {
 	box-sizing: border-box;
 	padding: 10px 0;
@@ -44,58 +44,58 @@ body
 	margin-top: 20px;
 }
 
-#qa-output 
-{ 
+#qa-output
+{
 	background-color: Pink;
 }
 
-#qa-button-row 
+#qa-button-row
 {
-	position: relative; 
+	position: relative;
 	margin-left: 5px;
 	margin-right: 5px;
 	margin-bottom: 5px;
 	margin-top: 10px;
-	padding: 0px;  
+	padding: 0px;
 	height: 20px;
 }
 
 .qa-spacer
 {
-	width: 1px; 
-	height: 20px; 
+	width: 1px;
+	height: 20px;
 	margin-left: 14px;
-	
+
 	position: absolute;
 	background-color: Silver;
-	display: inline-block; 
+	display: inline-block;
 	list-style: none;
 }
 
 .qa-button
 {
-	width: 20px; 
-	height: 20px; 
+	width: 20px;
+	height: 20px;
 	margin-left: 5px;
 	margin-right: 5px;
-	
+
 	position: absolute;
-	background-image: url(images/qa-buttons.png);
+	background-image: url(img/qa-buttons.png);
 	background-repeat: no-repeat;
 	background-position: 0px 0px;
-	display: inline-block; 
+	display: inline-block;
 	list-style: none;
 }
 
 .qa-button > a
 {
-	width: 20px; 
-	height: 20px; 
+	width: 20px;
+	height: 20px;
 	margin-left: 5px;
 	margin-right: 5px;
-	
+
 	position: absolute;
-	display: inline-block; 
+	display: inline-block;
 }
 
 
@@ -117,6 +117,19 @@ body
 #qa-button-bar #qa-redo-button    {left: 350px; background-position: -220px 0;}
 #qa-button-bar #qa-help-button    {right: 0px; background-position: -240px 0;}
 
+#qa-button-bar #qa-undo-button:hover,
+#qa-button-bar #qa-redo-button:hover,
+#qa-button-bar #qa-italic-button:hover,
+#qa-button-bar #qa-bold-button:hover,
+#qa-button-bar #qa-link-button,
+#qa-button-bar #qa-quote-button,
+#qa-button-bar #qa-code-button,
+#qa-button-bar #qa-image-button,
+#qa-button-bar #qa-olist-button,
+#qa-button-bar #qa-ulist-button,
+#qa-button-bar #qa-heading-button,
+#qa-button-bar #qa-hr-button,
+#qa-button-bar #qa-help-button {cursor:pointer;}
 
 .qa-prompt-background
 {
@@ -145,23 +158,6 @@ body
 	font-family: trebuchet MS, helvetica, sans-serif;
 	font-size: 0.8em;
 	font-weight: bold;
-}
-.qa-grippie {
-	margin-right: 0px;
-	width: 100%;
-	border: 1px solid #ddd;
-	border-width: 0 1px 1px;
-	cursor: s-resize;
-	height: 9px;
-	overflow: hidden;
-	background-color: #eee;
-	margin-top: -4px;
-}
-textarea { resize:none; padding:0px; }
-
-textarea:focus {
-	outline: 0;
-	border: 1px solid;
 }
 .qa-title-preview {
 	margin-left: 25%;
