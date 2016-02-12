@@ -10,11 +10,11 @@
      * Extend obj function
      *
      * This is an object extender function. It allows us to extend an object
-     * by passing in additional variables and overwriting the defaults.
+     * by passing in additional letiables and overwriting the defaults.
      */
 
     function extend( a, b ) {
-        for( var key in b ) {
+        for( let key in b ) {
             if( b.hasOwnProperty( key ) ) {
                 a[key] = b[key];
             }
@@ -36,7 +36,7 @@
     /**
      * QaEditor options Object
      *
-     * @type {HTMLElement} wrapper.
+     * @type {HTMLElement} wrapper to append the panel.
      *
      *
      */
@@ -47,7 +47,7 @@
     /**
      * QaEditor _init
      *
-     * This is the initializer function. It builds the panel with buttons.
+     * This is the initializer function. It builds the HTML of the panel with buttons
      *
      * @type {HTMLElement} this.qa - The Q&A Editor panel div
      *
@@ -212,20 +212,20 @@
     /**
      * QaEditor _events
      *
-     * This is events function that add eventListeners to the buttons.
+     * This is our events function, attach event listener to the button
      *
-     *
+     * @type {HTMLElement}
      */
     QaEditor.prototype._events = function() {
 
         CodeMirror.defineOption("listeners", [], function (cm, value) {
-            for (var i = 0, len = value.length; i < len; i++) {
+            for (let i = 0, len = value.length; i < len; i++) {
                 addButtonListener(cm, value[i]);
             }
         });
 
-        var addButtonListener = function(cm, config) {
-            var buttonNode = document.getElementById(config.id);
+        let addButtonListener = function(cm, config) {
+            let buttonNode = document.getElementById(config.id);
             buttonNode.addEventListener('click', function (e) {
 
                 config.callback(cm);
@@ -233,13 +233,13 @@
             });
 
             if (config.hotkey) {
-                var map = {};
+                let map = {};
                 map[config.hotkey] = config.callback;
                 cm.addKeyMap(map);
             }
 
         };
-        
+
     };
 
     window.QaEditor = QaEditor;

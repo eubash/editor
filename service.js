@@ -3,12 +3,13 @@
  */
 
 ( function() {
+    'use strict';
 
-    var qa = new QaEditor({
+    let qa = new QaEditor({
         wrapper: document.getElementById("qa-button-bar")
     });
 
-    var editor = CodeMirror.fromTextArea(document.getElementById('qa-input'), {
+    let editor = CodeMirror.fromTextArea(document.getElementById('qa-input'), {
         lineNumbers: false,
         mode: 'markdown',
         listeners: [
@@ -16,109 +17,84 @@
                 id: 'qa-bold-button',
                 hotkey: 'Ctrl-B',
                 callback: function (cm) {
-                    var selection = cm.getSelection();
-                    cm.replaceSelection('**' + selection + '**');
-                    if (!selection) {
-                        var cursorPos = cm.getCursor();
-                        cm.setCursor(cursorPos.line, cursorPos.ch - 2);
-                    }
+                    addButtonEvent(cm, "**", "**", 2, "strong text");
                 }
             },
             {
                 id: 'qa-italic-button',
                 hotkey: 'Ctrl-I',
                 callback: function (cm) {
-                    var selection = cm.getSelection();
-                    cm.replaceSelection('*' + selection + '*');
-                    if (!selection) {
-                        var cursorPos = cm.getCursor();
-                        cm.setCursor(cursorPos.line, cursorPos.ch - 1);
-                    }
+                    addButtonEvent(cm, "*", "*", 1, "italic text");
                 }
             },
             {
                 id: 'qa-link-button',
                 hotkey: 'Ctrl-L',
                 callback: function (cm) {
-                    var selection = cm.getSelection();
-                    var text = '';
-                    var link = '';
+                    let selection = cm.getSelection();
+                    let text = '';
+                    let link = 'http://yourlink';
 
                     if (selection.match(/^https?:\/\//)) {
                         link = selection;
                     } else {
                         text = selection;
                     }
-                    cm.replaceSelection('[' + text + '](' + link + ')');
 
-                    var cursorPos = cm.getCursor();
-                    if (!selection) {
-                        cm.setCursor(cursorPos.line, cursorPos.ch - 3);
-                    } else if (link) {
+                    if(link)
+                        text = 'link text';
+                        cm.replaceSelection('[' + text + '](' + link + ')');
+                        let cursorPos = cm.getCursor();
                         cm.setCursor(cursorPos.line, cursorPos.ch - (3 + link.length));
-                    } else {
-                        cm.setCursor(cursorPos.line, cursorPos.ch - 1);
-                    }
                 }
             },
             {
                 id: 'qa-quote-button',
                 hotkey: 'Ctrl-Q',
                 callback: function (cm) {
-                    cm.replaceSelection("> " + cm.getSelection());
+                    addButtonEvent(cm, "> ", "\n", 0, "Blockquote");
                 }
             },
             {
                 id: 'qa-code-button',
                 hotkey: 'Ctrl-K',
                 callback: function (cm) {
-                    var selection = cm.getSelection();
-                    cm.replaceSelection("`\n" + selection + "\n`\n");
-                    if (!selection) {
-                        var cursorPos = cm.getCursor();
-                        cm.setCursor(cursorPos.line - 2, 0);
-                    }
+                    addButtonEvent(cm, "`\n", "\n`\n", 0, "enter your code here");
                 }
             },
             {
                 id: 'qa-image-button',
                 hotkey: 'Ctrl-G',
                 callback: function (cm) {
-                    var selection = cm.getSelection();
-                    var text = '';
-                    var link = '';
+                    let selection = cm.getSelection();
+                    let text = "alt text";
 
-                    cm.replaceSelection('![' + text + '](' + link + ')');
-
-                    var cursorPos = cm.getCursor();
-                    if (!selection) {
-                        cm.setCursor(cursorPos.line, cursorPos.ch - 3);
-                    } else if (link) {
-                        cm.setCursor(cursorPos.line, cursorPos.ch - (3 + link.length));
-                    } else {
-                        cm.setCursor(cursorPos.line, cursorPos.ch - 1);
-                    }
+                    if (!selection)
+                        selection = "your image path";
+                        cm.replaceSelection('![' + text + '](' + selection + ')');
+                        let cursorPos = cm.getCursor();
+                        cm.setCursor(cursorPos.line, cursorPos.ch - (1 + selection.length));
                 }
             },
             {
                 id: 'qa-olist-button',
                 hotkey: 'Ctrl-O',
                 callback: function (cm) {
-                    cm.replaceSelection("\n1. " + cm.getSelection());
+                    addButtonEvent(cm, "1. ", "\n", 0, "List item");
                 }
             },
             {
                 id: 'qa-ulist-button',
                 hotkey: 'Ctrl-U',
                 callback: function (cm) {
-                    cm.replaceSelection("\n- " + cm.getSelection());
+                    addButtonEvent(cm, "- ", "\n", 0, "List item");
                 }
             },
             {
                 id: 'qa-heading-button',
                 hotkey: 'Ctrl-H',
                 callback: function (cm) {
-                    cm.replaceSelection("## " + cm.getSelection());
+                    addButtonEvent(cm, "## ", "\n", 0, "Heading");
                 }
             },
             {
@@ -148,5 +124,16 @@
     editor.on("change", function(cm, change) {
         document.getElementById("qa-preview").innerHTML = cm.getValue();
     });
+
+    let addButtonEvent = function(cm, before, after, num, defaultText) {
+
+        let selection = cm.getSelection();
+        if (!selection)
+            selection = defaultText;
+            cm.replaceSelection(before + selection + after);
+            let cursorPos = cm.getCursor();
+            cm.setCursor(cursorPos.line, cursorPos.ch - num);
+
+    };
 
 })();
