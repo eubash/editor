@@ -1,0 +1,82 @@
+body
+{
+	background-color: White
+}
+.mdeditor {
+	width: 100%;
+}
+.mdeditor__button-bar {
+	width: 100%;
+	background-color: #eeeeee;
+	border-top: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	height: 36px;
+}
+.mdeditor__input {
+	height: 200px;
+	background-color: #fff;
+	border: 1px solid #cccccc;
+}
+.mdeditor__preview {
+	box-sizing: border-box;
+	padding: 20px 0;
+	border-top: 1px dotted #ccc;
+	border-bottom: 1px dotted #ccc;
+	clear: both;
+	margin-top: 20px;
+}
+
+.button-row__button
+{
+	width: 20px;
+	height: 20px;
+	margin-left: 5px;
+	margin-right: 5px;
+	position: absolute;
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	display: inline-block;
+	list-style: none;
+}
+
+.button-row__button > i
+{
+	width: 20px;
+	height: 20px;
+	margin-left: 5px;
+	margin-right: 5px;
+	position: absolute;
+	display: inline-block;
+}
+
+
+/* sprite button slicing style information */
+.button-row__button_bold    {left: 0px;top: 12px;}
+.button-row__button_italic  {left: 25px;top: 12px;}
+.button-row__button_link    {left: 75px;top: 12px;}
+.button-row__button_quote   {left: 100px;top: 12px;}
+.button-row__button_code    {left: 125px;top: 12px;}
+.button-row__button_image   {left: 150px;top: 12px;}
+.button-row__button_olist   {left: 200px;top: 12px;}
+.button-row__button_ulist   {left: 225px;top: 12px;}
+.button-row__button_heading {left: 250px;top: 12px;}
+.button-row__button_hr      {left: 275px;top: 12px;}
+.button-row__button_undo    {left: 325px;top: 12px;}
+.button-row__button_redo    {left: 350px;top: 12px;}
+
+
+.button-row__button_bold:hover,
+.button-row__button_italic:hover,
+.button-row__button_link:hover,
+.button-row__button_quote:hover,
+.button-row__button_code:hover,
+.button-row__button_image:hover,
+.button-row__button_olist:hover,
+.button-row__button_ulist:hover,
+.button-row__button_heading:hover,
+.button-row__button_hr:hover,
+.button-row__button_undo:hover,
+.button-row__button_redo:hover {cursor:pointer;}
+
+
