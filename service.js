@@ -6,29 +6,29 @@
     'use strict';
 
     let qa = new QaEditor({
-        wrapper: document.getElementById("qa-button-bar")
+        wrapper: document.getElementById("mdeditor-button-bar")
     });
 
-    let editor = CodeMirror.fromTextArea(document.getElementById('qa-input'), {
+    let editor = CodeMirror.fromTextArea(document.getElementById('mdeditor-input'), {
         lineNumbers: false,
         mode: 'markdown',
         listeners: [
             {
-                id: 'qa-bold-button',
+                id: 'mdeditor-bold-button',
                 hotkey: 'Ctrl-B',
                 callback: function (cm) {
                     addButtonEvent(cm, "**", "**", 2, "strong text");
                 }
             },
             {
-                id: 'qa-italic-button',
+                id: 'mdeditor-italic-button',
                 hotkey: 'Ctrl-I',
                 callback: function (cm) {
                     addButtonEvent(cm, "*", "*", 1, "italic text");
                 }
             },
             {
-                id: 'qa-link-button',
+                id: 'mdeditor-link-button',
                 hotkey: 'Ctrl-L',
                 callback: function (cm) {
                     let selection = cm.getSelection();
@@ -49,21 +49,21 @@
                 }
             },
             {
-                id: 'qa-quote-button',
+                id: 'mdeditor-quote-button',
                 hotkey: 'Ctrl-Q',
                 callback: function (cm) {
                     addButtonEvent(cm, "> ", "\n", 0, "Blockquote");
                 }
             },
             {
-                id: 'qa-code-button',
+                id: 'mdeditor-code-button',
                 hotkey: 'Ctrl-K',
                 callback: function (cm) {
                     addButtonEvent(cm, "`\n", "\n`\n", 0, "enter your code here");
                 }
             },
             {
-                id: 'qa-image-button',
+                id: 'mdeditor-image-button',
                 hotkey: 'Ctrl-G',
                 callback: function (cm) {
                     let selection = cm.getSelection();
@@ -77,42 +77,42 @@
                 }
             },
             {
-                id: 'qa-olist-button',
+                id: 'mdeditor-olist-button',
                 hotkey: 'Ctrl-O',
                 callback: function (cm) {
                     addButtonEvent(cm, "1. ", "\n", 0, "List item");
                 }
             },
             {
-                id: 'qa-ulist-button',
+                id: 'mdeditor-ulist-button',
                 hotkey: 'Ctrl-U',
                 callback: function (cm) {
                     addButtonEvent(cm, "- ", "\n", 0, "List item");
                 }
             },
             {
-                id: 'qa-heading-button',
+                id: 'mdeditor-heading-button',
                 hotkey: 'Ctrl-H',
                 callback: function (cm) {
                     addButtonEvent(cm, "## ", "\n", 0, "Heading");
                 }
             },
             {
-                id: 'qa-hr-button',
+                id: 'mdeditor-hr-button',
                 hotkey: 'Ctrl-R',
                 callback: function (cm) {
                     cm.replaceSelection("\n*****\n" + cm.getSelection());
                 }
             },
             {
-                id: 'qa-undo-button',
+                id: 'mdeditor-undo-button',
                 hotkey: 'Ctrl-Z',
                 callback: function (cm) {
                     cm.undo();
                 }
             },
             {
-                id: 'qa-redo-button',
+                id: 'mdeditor-redo-button',
                 hotkey: 'Ctrl-Y',
                 callback: function (cm) {
                     cm.redo();
@@ -122,7 +122,7 @@
     });
 
     editor.on("change", function(cm, change) {
-        document.getElementById("qa-preview").innerHTML = cm.getValue();
+        document.getElementById("mdeditor-preview").innerHTML = cm.getValue();
     });
 
     let addButtonEvent = function(cm, before, after, num, defaultText) {
